@@ -94,6 +94,7 @@ function initNav(){
       document.querySelectorAll(".view").forEach(function(v){ v.classList.remove("active"); });
       document.querySelector('.view[data-view="'+b.dataset.view+'"]').classList.add("active");
       document.getElementById("sidebar").classList.remove("open");
+      document.getElementById("sidebarBackdrop").classList.remove("open");
       if(b.dataset.view==="dashboard") renderDashboard();
       if(b.dataset.view==="dre") renderDre();
       if(b.dataset.view==="caixa") renderCaixa();
@@ -101,6 +102,11 @@ function initNav(){
   });
   document.getElementById("menuToggle").addEventListener("click", function(){
     document.getElementById("sidebar").classList.toggle("open");
+    document.getElementById("sidebarBackdrop").classList.toggle("open");
+  });
+  document.getElementById("sidebarBackdrop").addEventListener("click", function(){
+    document.getElementById("sidebar").classList.remove("open");
+    document.getElementById("sidebarBackdrop").classList.remove("open");
   });
 }
 

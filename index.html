@@ -10,7 +10,7 @@
 <meta name="theme-color" content="#eb6834">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="Sua Mesa">
 <link rel="apple-touch-icon" sizes="180x180" href="icon-180.png">
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
@@ -139,11 +139,22 @@ hr.sep{border:none;border-top:1px solid var(--grid);margin:18px 0;}
 .k{font-weight:650;}
 .mono{font-variant-numeric:tabular-nums;}
 @media (max-width:860px){
-  .sidebar{position:fixed;left:-240px;z-index:40;transition:left .2s;box-shadow:0 0 0 rgba(0,0,0,0);}
+  .sidebar{position:fixed;left:-260px;top:0;width:250px;z-index:40;transition:left .2s;box-shadow:0 0 0 rgba(0,0,0,0);padding-top:max(20px, env(safe-area-inset-top));}
   .sidebar.open{left:0;box-shadow:4px 0 24px rgba(0,0,0,.15);}
-  main{padding:20px 16px 50px;}
-  .topbar-mobile{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
-  .topbar-mobile button{border:1px solid var(--border);background:#fff;border-radius:8px;padding:8px 10px;}
+  .sidebar-backdrop{display:none;position:fixed;inset:0;background:rgba(11,11,11,.35);z-index:39;}
+  .sidebar-backdrop.open{display:block;}
+  nav.tabs button{padding:13px 12px;font-size:15.5px;}
+  main{padding:14px 16px 50px;}
+  .topbar-mobile{display:flex;align-items:center;gap:10px;margin-bottom:16px;padding-top:max(6px, env(safe-area-inset-top));position:sticky;top:0;background:var(--plane);z-index:30;}
+  .topbar-mobile button{border:1px solid var(--border);background:#fff;border-radius:10px;min-width:44px;min-height:44px;font-size:19px;line-height:1;display:flex;align-items:center;justify-content:center;}
+  .topbar-mobile strong{font-size:15.5px;}
+  .btn{padding:11px 16px;font-size:14.5px;}
+  .btn.sm{padding:8px 12px;font-size:13px;}
+  .field input,.field select{padding:11px 12px;font-size:16px;}
+  .field label{font-size:12px;}
+  table{font-size:14.5px;}
+  .view-head h2{font-size:19px;}
+  .stat .val{font-size:22px;}
 }
 .topbar-mobile{display:none;}
 @media (max-width:860px){.topbar-mobile{display:flex;}}
@@ -168,6 +179,7 @@ hr.sep{border:none;border-top:1px solid var(--grid);margin:18px 0;}
     </nav>
     <div class="sidebar-foot">Dados salvos no seu navegador (localStorage). Use a aba Backup para exportar.</div>
   </aside>
+  <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
 
   <main>
     <div class="topbar-mobile">
